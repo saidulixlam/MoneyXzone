@@ -50,7 +50,7 @@ const Signup = () => {
       const userData = JSON.parse(localStorage.getItem('userData'));
       if (userData && userData.name === loginData.name && userData.password === loginData.password) {
         localStorage.setItem('login', true);
-        navigate("/");
+        navigate("/sale");
       } else {
         setError('Invalid Credentials');
       }
@@ -62,7 +62,7 @@ const Signup = () => {
       const { confirmPassword, ...userData } = formData;
       localStorage.setItem('userData', JSON.stringify(userData));
       localStorage.setItem('login', true);
-      navigate("/");
+      navigate("/sale");
     }
   };
 
