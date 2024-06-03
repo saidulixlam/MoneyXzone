@@ -1,19 +1,22 @@
 import React from 'react';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom';
 import SaleOrders from './components/Order';
-import WeatherPage from './components/WeatherPage';
 import Signup from './components/Signup';
+
 const App = () => {
+
+  const isLoggedIn = localStorage.getItem('login') === 'true';
 
   return (
     <div className='mx-2 p-2 my-2'>
       <Router>
-      <Routes>
-        <Route path="/" element={<SaleOrders />} />
-        <Route exact path="/sign-up" element={<Signup />} />
-        <Route path="/:city/:latitude/:longitude" element={<WeatherPage />} />
-      </Routes>
-    </Router>
+        <Routes>
+          {isLoggedIn && <Route path="/" element={<SaleOrders />} />}
+          <Route path="/sign-up" element={<Signup />} />
+          <Route path="*" element={<Navigate to="/sign-up" />} />
+
+        </Routes>
+      </Router>
     </div>
   );
 };
