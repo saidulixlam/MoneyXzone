@@ -9,7 +9,7 @@ const App = () => {
     <div className='mx-2 p-2 my-2'>
       <Router>
       <Routes>
-        <Route exact path="/" element={<SaleOrders />} />
+        <Route path="/" element={<SaleOrders />} />
         <Route exact path="/sign-up" element={<Signup />} />
         <Route path="/:city/:latitude/:longitude" element={<WeatherPage />} />
       </Routes>
